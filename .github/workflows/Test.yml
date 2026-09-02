@@ -187,6 +187,7 @@ jobs:
         if: matrix.susfs != 'none'
         run: |
           set -euo pipefail
+          rm -rf susfs4ksu
           git clone -b gki-android14-6.1 https://gitlab.com/simonpunk/susfs4ksu.git susfs4ksu
           git -C susfs4ksu checkout "$SUSFS_PIN"
           V="$(sed -n 's/.*SUSFS_VERSION[^"]*"\([^"]*\)".*/\1/p' susfs4ksu/kernel_patches/include/linux/susfs.h)"
