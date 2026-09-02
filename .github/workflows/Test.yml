@@ -154,6 +154,7 @@ jobs:
         if: matrix.apatch != 'true'
         run: |
           set -euo pipefail
+          rm -rf KernelSU drivers/kernelsu
           git clone ${{ matrix.clone_args }} "${{ matrix.repo }}" KernelSU
           if [ -n "${{ matrix.pin }}" ]; then git -C KernelSU checkout "${{ matrix.pin }}"; fi
           echo "[i] driver @ $(git -C KernelSU rev-parse --short HEAD)  (${{ matrix.repo }})"
